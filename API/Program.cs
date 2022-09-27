@@ -1,5 +1,6 @@
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+var  AllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options=>{
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowSpecificOrigins,
+                      policy  =>
+                      {
+                         policy.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                      });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,8 +31,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors(AllowSpecificOrigins);
+app.UseAuthorization();   
 
 app.MapControllers();
 
