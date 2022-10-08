@@ -1,0 +1,23 @@
+<div class="conteiner mt-5">
+    <div style="text-align:center" *ngIf="!registerMode">
+        <h1>
+            Find your match...
+        </h1>
+        <p class="lead">
+            Come on into your ...all you need to do...
+        </p>
+        <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()" type="button">
+            Register
+        </button>
+        <button class="btn btn-info btn-lg" type="button">
+            Learn More
+        </button>
+    </div>
+</div>
+<div class="container mt-5" *ngIf="registerMode">
+    <div class="d-flex justify-content-center">
+        <div class="col-4">
+            <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+        </div>
+    </div>
+</div>
