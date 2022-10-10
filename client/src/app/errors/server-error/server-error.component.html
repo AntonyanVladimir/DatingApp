@@ -1,0 +1,23 @@
+<div class="container">
+    <h4>Internal Server Error - refresh the page, please.</h4>
+</div>
+<ng-container *ngIf="error">
+    <h5 class="text-danger">
+        Error: {{error.message}}
+    </h5>
+    <p class="font-weight-bold">
+        Note: If youre seeing this error...
+    </p>
+    <p>What to do next?</p>
+    <ol>
+        <li>Open the Chrome Developer Tools</li>
+        <li>Inspect the network Tab</li>
+        <li>Check the failing request</li>
+        <li>Examine the Request Url</li>
+        <li>Reproduce the Error in Postman</li>
+    </ol>
+    <p>Following is the stack trace: This is where your investigation schould start.</p>
+    <code class="mt-5" style="background-color:whitesmoke">
+        {{error.details}}
+    </code>
+</ng-container>
