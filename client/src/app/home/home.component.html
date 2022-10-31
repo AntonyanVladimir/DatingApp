@@ -14,10 +14,11 @@
         </button>
     </div>
 </div>
-<div class="container mt-5" *ngIf="registerMode">
+<div class="container mt-5" *ngIf="!registerMode">
     <div class="d-flex justify-content-center">
         <div class="col-4">
             <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
         </div>
     </div>
+    <app-member-list></app-member-list>
 </div>
