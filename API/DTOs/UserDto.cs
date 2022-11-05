@@ -3,11 +3,10 @@ using API.Controllers;
 
 namespace API.DTOs
 {
-    public class UserDto : BaseApiController 
+    public class UserDto 
     {
-        [Required]
         public string Username { get; set; }
-        [Required]
         public string Token { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }

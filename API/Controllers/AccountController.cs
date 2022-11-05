@@ -41,7 +41,7 @@ public class AccountController : BaseApiController
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
 
-        var user = await _context.Users.SingleOrDefaultAsync(m => m.UserName == loginDto.Username);
+        var user = await _context.Users.Include(m=>m.Photos).SingleOrDefaultAsync(m => m.UserName == loginDto.Username);
         if (user == null) return Unauthorized("Invalid Username");
 
         using var hmac = new HMACSHA512(user.PasswordSalt);
@@ -55,11 +55,14 @@ public class AccountController : BaseApiController
                 return Unauthorized("Invalid Password");
             }
         }
-        return new UserDto
+        var userDto = new UserDto
         {
             Username = user.UserName,
-            Token = _tokenService.CreateToken(user)
+            Token = _tokenService.CreateToken(user),
+            PhotoUrl = user.Photos?.FirstOrDefault(m=>m.IsMain == true)?.Url
         };
+
+        return userDto;
     }
 
     private async Task<bool> UserExists(string username)
