@@ -29,7 +29,7 @@
         </form>
       </div>
       <div class="btn-group" dropdown *ngIf="(accountService.currentUser$| async) as user">
-        <img class="me-2" src="{{user.photoUrl}}" alt="{{user.username}}">
+        <img *ngIf="user.photoUrl" class="me-2" src="{{user.photoUrl}}" alt="{{user.username}}">
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                 aria-controls="dropdown-basic">
                 Welcome {{user.username | titlecase }} <span class="caret"></span>
