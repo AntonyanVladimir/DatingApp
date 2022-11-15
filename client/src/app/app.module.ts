@@ -30,6 +30,9 @@ import {FileUploadModule} from 'ng2-file-upload';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +52,6 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,9 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     ReactiveFormsModule,
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
+
   ],
   exports:[
     BsDropdownModule,
@@ -74,7 +79,9 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     TabsModule,
     NgxGalleryModule,
     FileUploadModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    PaginationModule,
+    ButtonsModule
   ],
   providers: [
     {

@@ -32,7 +32,7 @@
         <img *ngIf="user.photoUrl" class="me-2" src="{{user.photoUrl}}" alt="{{user.username}}">
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                 aria-controls="dropdown-basic">
-                Welcome {{user.username | titlecase }} <span class="caret"></span>
+                Welcome {{user.KnownAs | titlecase }} <span class="caret"></span>
         </button>
         <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
             role="menu" aria-labelledby="button-basic">
